@@ -13,27 +13,14 @@
 
 
     <div class="home-page">
-        <header class="header">
-            <nav>
-                <h1>Do-c-hanger<span id="header-icon">🚀</span></h1>
-                <button class="Register-btn" onclick="register_togglePopup()">Contact Me</button>
-                <img src="menu-bar.png" alt="" class="menu-icon" id="menuToggle">
-
-                <ul class="header-menu">
-                    <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Services</li></a>
-                    <a href="#"><li>Features</li></a>
-                    <a href="#"><li>About us</li></a>
-                </ul>
-            </nav>
-        </header>
+        <div id="navbar-placeholder"></div>
         <div class="home-title">
             <h1 class="home-title-main">Fast & Secure Document Conversion</h1>
             <h4 class="home-title-sub">Convert your files instantly—DOC to PDF, PDF to DOC, and more. No sign-up
                 required!</h4>
         </div>
         <div class="container">
-            <div class="doc-pdf" >
+            <div class="doc-pdf" onclick="window.location.href='doc-pdf.html'">
                 <img src="image/sheet.png" alt="Net Illa" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>Word to pdf</h3>
@@ -79,38 +66,32 @@
                     <h4>Convert your JPEG images to transparent PNG format easily.</h4>
                 </div>
             </div>
+            <div class="doc-pdf">
+                <img src="image/png.png" alt="JPEG to PNG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>JPEG to PNG</h3>
+                    <h4>Convert your JPEG images to transparent PNG format easily.</h4>
+                </div>
+            </div>
+            <div class="doc-pdf">
+                <img src="image/png.png" alt="JPEG to PNG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>JPEG to PNG</h3>
+                    <h4>Convert your JPEG images to transparent PNG format easily.</h4>
+                </div>
+            </div>
         </div>
 
     </div>
 
 
-
-
-    <div id="r-popupOverlay" class="overlay-container">
-        <div class="popup-box">
-            <h2 style="color: green;">Contact Me</h2>
-            <form class="form-container" method="post" action="database.php">
-                <label class="form-label" for="register-name">Username:</label>
-                <input class="form-input" type="text" placeholder="Enter Your Username" id="register-name" name="name"
-                    required>
-
-                <label class="form-label" for="register-email">Email:</label>
-                <input class="form-input" type="email" placeholder="Enter Your Email" id="register-email" name="email"
-                    required>
-
-                <label class="form-label" for="register-location">Location:</label>
-                <input class="form-input" type="text" placeholder="Enter Your Location" id="register-location"
-                    name="location" required>
-
-                <button class="btn-submit" type="submit">Register</button>
-            </form>
-            <button class="btn-close-popup" onclick="register_togglePopup()">Close</button>
-        </div>
-    </div>
-
-
-
-
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
     <script src="script.js"></script>
 </body>
 
