@@ -55,24 +55,6 @@ body,html{
     transform: scale(1.1);
 }
 
-.header-menu{
-    position: absolute;
-    display: flex;
-    gap: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    list-style-type: none;
-    right: 180px;
-    font-family: 'Franklin Gothic Medium';
-    cursor: pointer;
-}
-.header-menu a{
-    text-decoration: none;
-    color: white;
-}
-.header-menu li:hover{
-    color: rgb(102, 205, 223);
-}
 
 .home-title{
     justify-items: center;
@@ -94,6 +76,7 @@ body,html{
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: 1000;
 }
 
 .popup-box,.r-popup-box {
@@ -205,47 +188,11 @@ body,html{
 }
 
 
-@media (max-width: 700px) {
-    .home-title-main,.home-title-sub{
-        text-align: center;
-    }
-    .menu-icon{
-        display: block;
-    }
-
-    .header-menu {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-        background: linear-gradient(135deg, #007BFF, #0056b3);
-        padding: 20px;
-        border-radius: 10px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .menu a {
-        display: block;
-        text-align: center;
-        font-size: 18px;
-        color: white;
-        padding: 10px;
-        width: 100%;
-        border-radius: 5px;
-    }
-
-    .btn,
-    .Register-btn{
-        display: none;
-    }
-}
-
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .doc-pdf {
@@ -301,8 +248,63 @@ body,html{
     }
 }
 
+.menu-container {
+    position: absolute;
+    font-family: 'Franklin Gothic Medium';
+    right: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.menu-container ul {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+}
+
+
+.menu-container a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+
+.menu-container a:hover {
+    color: #ffcc00;
+}
 
 
 
+@media (max-width: 700px) {
+    .home-title-main,.home-title-sub{
+        text-align: center;
+    }
+    .menu-icon{
+        display: block;
+    }
 
+    
 
+    .menu a {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .btn,
+    .Register-btn{
+        display: none;
+    }
+
+    .menu-container{
+        display: none;
+    }
+}

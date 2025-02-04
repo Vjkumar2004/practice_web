@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav>
+            <h1>Do-c-hanger<span id="header-icon">🚀</span></h1>
+            
+            <div class="menu-container">
+                <ul class="header-menu">
+                    <a href="mainPage.html"><li>Home</li></a>
+                    <a href="#"><li>Services</li></a>
+                    <a href="#"><li>Features</li></a>
+                    <a href="#"><li>About us</li></a>
+                </ul>
+            </div>
+    
+            <button class="Register-btn" onclick="register_togglePopup()">Contact Me</button>
+            <img src="menu-bar.png" alt="Menu Icon" class="menu-icon" id="menuToggle">
+        </nav>
+    </header>
+    
+    <div id="r-popupOverlay" class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: green;">Contact Me</h2>
+            <form class="form-container" method="post" action="database.php">
+                <label class="form-label" for="register-name">Username:</label>
+                <input class="form-input" type="text" placeholder="Enter Your Username" id="register-name" name="name"
+                    required>
+
+                <label class="form-label" for="register-email">Email:</label>
+                <input class="form-input" type="email" placeholder="Enter Your Email" id="register-email" name="email"
+                    required>
+
+                <label class="form-label" for="register-location">Location:</label>
+                <input class="form-input" type="text" placeholder="Enter Your Location" id="register-location"
+                    name="location" required>
+
+                <button class="btn-submit" type="submit">Register</button>
+            </form>
+            <button class="btn-close-popup" onclick="register_togglePopup()">Close</button>
+        </div>
+    </div>
+</body>
+
+</html>
