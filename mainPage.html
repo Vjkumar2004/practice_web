@@ -19,18 +19,11 @@
                 <button class="Register-btn" onclick="register_togglePopup()">Contact Me</button>
                 <img src="menu-bar.png" alt="" class="menu-icon" id="menuToggle">
 
-                <div class="menu" id="menu">
-                    <a href="#">Home</a>
-                    <a href="#">Services</a>
-                    <a href="#">Features</a>
-                    <a href="#">About us</a>
-                    <a onclick="register_togglePopup()">Contact</a>
-                </div>
                 <ul class="header-menu">
-                    <li>Home</li>
-                    <li>Services</li>
-                    <li>Features</li>
-                    <li>About us</li>
+                    <a href="#"><li>Home</li></a>
+                    <a href="#"><li>Services</li></a>
+                    <a href="#"><li>Features</li></a>
+                    <a href="#"><li>About us</li></a>
                 </ul>
             </nav>
         </header>
@@ -40,8 +33,15 @@
                 required!</h4>
         </div>
         <div class="container">
-            <div class="doc-pdf">
-                <img src="image/sheet.png" alt="PDF to DOC" class="doc-pdf-img">
+            <div class="doc-pdf" >
+                <img src="image/sheet.png" alt="Net Illa" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>Word to pdf</h3>
+                    <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
+                </div>
+            </div>
+            <div class="doc-pdf" onclick="window.location.href='pdf-doc.html'">
+                <img src="image/doc.png" alt="PDF to DOC" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>PDF to DOC</h3>
                     <h4>Convert your PDF files to editable Word documents easily.</h4>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="doc-pdf">
-                <img src="image/sheet.png" alt="PNG to JPG" class="doc-pdf-img">
+                <img src="image/jpg-file.png" alt="PNG to JPG" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>PNG to JPG</h3>
                     <h4>Quickly convert PNG images to high-quality JPG format.</h4>
@@ -57,7 +57,7 @@
             </div>
 
             <div class="doc-pdf">
-                <img src="image/sheet.png" alt="JPG to PNG" class="doc-pdf-img">
+                <img src="image/png.png" alt="JPG to PNG" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>JPG to PNG</h3>
                     <h4>Transform your JPG images into transparent PNG files effortlessly.</h4>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="doc-pdf">
-                <img src="image/sheet.png" alt="PNG to JPEG" class="doc-pdf-img">
+                <img src="image/jpeg.png" alt="PNG to JPEG" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>PNG to JPEG</h3>
                     <h4>Convert PNG images to high-quality JPEG format in seconds.</h4>
@@ -73,7 +73,7 @@
             </div>
 
             <div class="doc-pdf">
-                <img src="image/sheet.png" alt="JPEG to PNG" class="doc-pdf-img">
+                <img src="image/png.png" alt="JPEG to PNG" class="doc-pdf-img">
                 <div class="doc-pdf-text">
                     <h3>JPEG to PNG</h3>
                     <h4>Convert your JPEG images to transparent PNG format easily.</h4>
