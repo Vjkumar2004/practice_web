@@ -1,23 +1,15 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "users");
+$serever = "localhost";
+$username = "root";
+$password = "";
+$dbname = "users";
 
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
+$con = mysqli_connect($serever,$username,$password,$dbname);
+
+if($con){
+    echo "connect";
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = mysqli_real_escape_string($con, $_POST['name']);
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $location = mysqli_real_escape_string($con, $_POST['location']);
-
-    $sql = "INSERT INTO user_details (username, email, user_location) VALUES ('$name', '$email', '$location')";
-
-    if (mysqli_query($con, $sql)) {
-        echo "User details added successfully!";
-    } else {
-        echo "Error: " . mysqli_error($con);
-    }
+else{
+    echo "error";
 }
-
-mysqli_close($con);
 ?>

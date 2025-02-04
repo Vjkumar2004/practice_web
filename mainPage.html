@@ -10,92 +10,106 @@
 </head>
 
 <body>
-    <header class="header">
-        <nav>
-            <h1>Welcome to Sai Technology <span id="header-icon">🚀</span></h1>
-            <h4>Software Solution</h4>
-            <button class="btn" onclick="togglePopup()">Login</button>
-            <button class="Register-btn" onclick="register_togglePopup()">Register</button>
-            <img src="menu-bar.png" alt="" class="menu-icon" id="menuToggle">
 
-            <div class="menu" id="menu">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Services</a>
-                <a href="#">Contact</a>
-                <a onclick="togglePopup()">Login</a>
-                <a onclick="register_togglePopup()">Register</a>
-            </div>
-        </nav>
-    </header>
 
-    <div class="vdo-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/FYErehuSuuw"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil similique eius vel quo aliquid nemo laborum
-            repellat voluptate. Pariatur necessitatibus, et consequatur cum debitis fuga voluptatum. Nesciunt veniam
-            laborum quo quas? Reiciendis error impedit saepe, repudiandae rerum distinctio! Molestiae esse eum enim
-            labore vitae doloremque ea soluta quasi rem ipsum.</p>
-    </div>
+    <div class="home-page">
+        <header class="header">
+            <nav>
+                <h1>Do-c-hanger<span id="header-icon">🚀</span></h1>
+                <button class="Register-btn" onclick="register_togglePopup()">Contact Me</button>
+                <img src="menu-bar.png" alt="" class="menu-icon" id="menuToggle">
 
-    <div class="feature">
-        <h2>Features in Our Company</h2>
-        <ol>
-            <li>Java</li>
-            <li>Python</li>
-            <li>Backend</li>
-            <li>Skill</li>
-        </ol>
-    </div>
-
-   
-    <div id="popupOverlay" class="overlay-container">
-        <div class="popup-box">
-            <h2 style="color: green;">Login Form</h2>
-            <form class="form-container">
-                <label class="form-label" for="login-name">Username:</label>
-                <input class="form-input" type="text" placeholder="Enter Your Username" id="login-name" name="name" required>
-
-                <label class="form-label" for="login-email">Email:</label>
-                <input class="form-input" type="email" placeholder="Enter Your Email" id="login-email" name="email" required>
-
-                <button class="btn-submit" type="submit">Submit</button>
-            </form>
-            <button class="btn-close-popup" onclick="togglePopup()">Close</button>
+                <div class="menu" id="menu">
+                    <a href="#">Home</a>
+                    <a href="#">Services</a>
+                    <a href="#">Features</a>
+                    <a href="#">About us</a>
+                    <a onclick="register_togglePopup()">Contact</a>
+                </div>
+                <ul class="header-menu">
+                    <li>Home</li>
+                    <li>Services</li>
+                    <li>Features</li>
+                    <li>About us</li>
+                </ul>
+            </nav>
+        </header>
+        <div class="home-title">
+            <h1 class="home-title-main">Fast & Secure Document Conversion</h1>
+            <h4 class="home-title-sub">Convert your files instantly—DOC to PDF, PDF to DOC, and more. No sign-up
+                required!</h4>
         </div>
+        <div class="container">
+            <div class="doc-pdf">
+                <img src="image/sheet.png" alt="PDF to DOC" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>PDF to DOC</h3>
+                    <h4>Convert your PDF files to editable Word documents easily.</h4>
+                </div>
+            </div>
+
+            <div class="doc-pdf">
+                <img src="image/sheet.png" alt="PNG to JPG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>PNG to JPG</h3>
+                    <h4>Quickly convert PNG images to high-quality JPG format.</h4>
+                </div>
+            </div>
+
+            <div class="doc-pdf">
+                <img src="image/sheet.png" alt="JPG to PNG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>JPG to PNG</h3>
+                    <h4>Transform your JPG images into transparent PNG files effortlessly.</h4>
+                </div>
+            </div>
+
+            <div class="doc-pdf">
+                <img src="image/sheet.png" alt="PNG to JPEG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>PNG to JPEG</h3>
+                    <h4>Convert PNG images to high-quality JPEG format in seconds.</h4>
+                </div>
+            </div>
+
+            <div class="doc-pdf">
+                <img src="image/sheet.png" alt="JPEG to PNG" class="doc-pdf-img">
+                <div class="doc-pdf-text">
+                    <h3>JPEG to PNG</h3>
+                    <h4>Convert your JPEG images to transparent PNG format easily.</h4>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-   
+
+
+
     <div id="r-popupOverlay" class="overlay-container">
         <div class="popup-box">
-            <h2 style="color: green;">Register Form</h2>
+            <h2 style="color: green;">Contact Me</h2>
             <form class="form-container" method="post" action="database.php">
                 <label class="form-label" for="register-name">Username:</label>
-                <input class="form-input" type="text" placeholder="Enter Your Username" id="register-name" name="name" required>
+                <input class="form-input" type="text" placeholder="Enter Your Username" id="register-name" name="name"
+                    required>
 
                 <label class="form-label" for="register-email">Email:</label>
-                <input class="form-input" type="email" placeholder="Enter Your Email" id="register-email" name="email" required>
+                <input class="form-input" type="email" placeholder="Enter Your Email" id="register-email" name="email"
+                    required>
 
                 <label class="form-label" for="register-location">Location:</label>
-                <input class="form-input" type="text" placeholder="Enter Your Location" id="register-location" name="location" required>
+                <input class="form-input" type="text" placeholder="Enter Your Location" id="register-location"
+                    name="location" required>
 
-                <button class="btn-submit" type="submit">Submit</button>
+                <button class="btn-submit" type="submit">Register</button>
             </form>
             <button class="btn-close-popup" onclick="register_togglePopup()">Close</button>
         </div>
     </div>
 
-    <center>
-        <div class="footLink">
-            <p>
-                <a href="submit.html">Register form</a>
-                <a href="https://www.instagram.com/">Instagram</a>
-                <a href="https://web.whatsapp.com/">WhatsApp</a>
-            </p>
-        </div>
-    </center>
+
+
 
     <script src="script.js"></script>
 </body>
