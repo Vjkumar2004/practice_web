@@ -22,8 +22,10 @@
         <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
         <form id="uploadForm" method="POST" enctype="multipart/form-data">
             <label for="doc-pdf-btn" class="doc-pdf-label">Upload Word File</label>
+
             <input type="file" id="doc-pdf-btn" accept=".doc,.docx" hidden>
             <p id="file-name"></p>
+
         </form>
         <div id="conversion-status"></div>
     </div>
@@ -75,7 +77,6 @@
             }
         });
     </script>
-    
 </body>
 
 </html>

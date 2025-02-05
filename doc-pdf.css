@@ -28,6 +28,7 @@
     text-align: center;
     cursor: pointer;
     transition: all 0.2s linear;
+
 }
 
 .doc-pdf-label:hover {
@@ -40,7 +41,6 @@
         width: 150px;
     }
 }
-
 .container {
     background: white;
     padding: 20px;
