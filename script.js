@@ -13,4 +13,5 @@ const menuToggle = document.getElementById('menuToggle');
 
         menuToggle.addEventListener('click', function () {
             menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    
 });

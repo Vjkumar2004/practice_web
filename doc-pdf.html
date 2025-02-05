@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word to PDF Converter</title>
+    <link rel="stylesheet" href="doc-pdf.css">
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
+    <script src="script.js"></script>
+    <div class="doc-pdf-title">
+        <h1>Word to PDF</h1>
+        <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
+        <form id="uploadForm" method="POST" enctype="multipart/form-data">
+            <label for="doc-pdf-btn" class="doc-pdf-label">Upload Word File</label>
+            <input type="file" id="doc-pdf-btn" accept=".doc,.docx" hidden>
+            <p id="file-name"></p>
+        </form>
+        <div id="conversion-status"></div>
+    </div>
+
+    <script>
+        document.getElementById("doc-pdf-btn").addEventListener("change", function () {
+            const fileInput = document.getElementById("doc-pdf-btn");
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : "";
+            document.getElementById("file-name").innerText = fileName;
+        });
+    
+        document.getElementById('uploadForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+    
+            const fileInput = document.getElementById("doc-pdf-btn");
+            const file = fileInput.files[0];
+            const fileName = file ? file.name : "";
+            document.getElementById("file-name").innerText = fileName;
+
+    
+            if (!file) {
+                alert("Please upload a Word file.");
+                return;
+            }
+    
+            const formData = new FormData();
+            formData.append("file", file);
+    
+            document.getElementById('conversion-status').innerHTML = "Converting...";
+    
+            try {
+                const response = await fetch("http://localhost:3000/convert", {
+                    method: "POST",
+                    body: formData
+                });
+    
+                const data = await response.json();
+    
+                if (data.success) {
+                    const pdfURL = `http://localhost:3000${data.pdfURL}`;
+                    document.getElementById("pdfPreview").src = pdfURL;
+                    document.getElementById('conversion-status').innerHTML = "Conversion Successful!";
+                } else {
+                    document.getElementById('conversion-status').innerHTML = "Conversion failed.";
+                }
+            } catch (error) {
+                document.getElementById('conversion-status').innerHTML = "An error occurred.";
+                console.error(error);
+            }
+        });
+    </script>
+    
+</body>
+
+</html>

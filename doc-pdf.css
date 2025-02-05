@@ -1,0 +1,89 @@
+.doc-pdf-title{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium';
+}
+
+.doc-pdf-title h1{
+    opacity: 0.7;
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.doc-pdf-title h4{
+    opacity: 0.7;
+    font-weight: normal;
+}
+
+.doc-pdf-label {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 20px 20px;
+    width: 300px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+.doc-pdf-label:hover {
+    transform: scale(1.1);
+}
+
+
+@media (max-width : 768px){
+    .doc-pdf-label{
+        width: 150px;
+    }
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin: auto;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.convert-btn {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#conversion-status {
+    margin-top: 20px;
+}
+
+.loader {
+    display: none;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007BFF;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
