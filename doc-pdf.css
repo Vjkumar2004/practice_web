@@ -1,0 +1,43 @@
+.doc-pdf-title{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium';
+}
+
+.doc-pdf-title h1{
+    opacity: 0.7;
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.doc-pdf-title h4{
+    opacity: 0.7;
+    font-weight: normal;
+}
+
+.doc-pdf-label {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 20px 20px;
+    width: 300px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.8s linear;
+}
+
+.doc-pdf-label:hover {
+    transform: scale(1.1);
+}
+
+
+@media (max-width : 768px){
+    .doc-pdf-label{
+        width: 150px;
+    }
+}
+

@@ -1,9 +1,12 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Word to PDF Converter</title>
+    <link rel="stylesheet" href="doc-pdf.css">
 </head>
+
 <body>
     <div id="navbar-placeholder"></div>
     <script>
@@ -14,5 +17,57 @@
             });
     </script>
     <script src="script.js"></script>
+    <div class="doc-pdf-title">
+        <h1>Word to PDF</h1>
+        <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
+        <form id="uploadForm" method="POST" enctype="multipart/form-data">
+            <label for="doc-pdf-btn" class="doc-pdf-label">Upload Word File</label>
+            <input type="file" id="doc-pdf-btn"
+                accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                hidden>
+        </form>
+        <div id="conversion-status"></div>
+    </div>
+
+    <script>
+        document.getElementById('doc-pdf-btn').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const validTypes = [
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            ];
+
+            if (validTypes.includes(file.type)) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('server-side-script-url', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            const pdfURL = data.pdfURL;
+                            document.getElementById('conversion-status').innerHTML =
+                                `<p>File "${file.name}" uploaded and converted successfully!</p>`;
+                        } else {
+                            document.getElementById('conversion-status').innerHTML =
+                                `<p >Failed to convert the file. Please try again.</p>`;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('conversion-status').innerHTML =
+                        `<p style="color: red;">An error occurred. Please try again.</p>`;
+                    });
+            } else {
+                alert("Please upload a valid Word document (.doc or .docx)");
+                event.target.value = '';
+            }
+        });
+    </script>
+
 </body>
+
 </html>
