@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word to PDF Converter</title>
     <link rel="stylesheet" href="doc-pdf.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script> -->
 </head>
 
 <body>
@@ -20,61 +22,49 @@
     <div class="doc-pdf-title">
         <h1>Word to PDF</h1>
         <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
-        <form id="uploadForm" method="POST" enctype="multipart/form-data">
-            <label for="doc-pdf-btn" class="doc-pdf-label">Upload Word File</label>
 
-            <input type="file" id="doc-pdf-btn" accept=".doc,.docx" hidden>
-            <p id="file-name"></p>
+        <form id="uploadForm">
+            <label for="fileSelect" class="doc-pdf-label">Upload Word File</label>
+            <input type="file" id="fileSelect" accept=".doc,.docx" style="display: none;">
+            <div class="loader3" id="loader3" style="display: none;">
+                <div class="bars bar1"></div>
+                <div class="bars bar2"></div>
+                <div class="bars bar3"></div>
+                <div class="bars bar4"></div>
+                <div class="bars bar5"></div>
+                <div class="bars bar6"></div>
+                <div class="bars bar7"></div>
+                <div class="bars bar8"></div>
+                <div class="bars bar9"></div>
+                <div class="bars bar10"></div>
+            </div>
+            <p id="file-name" style="color: orange;"></p>
+            <button class="convert-btn" id="convert-btn" style="display: none;">Convert</button>
 
         </form>
-        <div id="conversion-status"></div>
+
+
+        <!-- <div class="preview-container" style="position: absolute; border: 1px solid black; width: 300px; height: 300px; top: 260px; overflow: scroll;"></div> -->
     </div>
 
-    <script>
-        document.getElementById("doc-pdf-btn").addEventListener("change", function () {
-            const fileInput = document.getElementById("doc-pdf-btn");
-            const fileName = fileInput.files[0] ? fileInput.files[0].name : "";
-            document.getElementById("file-name").innerText = fileName;
-        });
-    
-        document.getElementById('uploadForm').addEventListener('submit', async function (event) {
-            event.preventDefault();
-    
-            const fileInput = document.getElementById("doc-pdf-btn");
-            const file = fileInput.files[0];
-            const fileName = file ? file.name : "";
-            document.getElementById("file-name").innerText = fileName;
 
-    
-            if (!file) {
-                alert("Please upload a Word file.");
-                return;
-            }
-    
-            const formData = new FormData();
-            formData.append("file", file);
-    
-            document.getElementById('conversion-status').innerHTML = "Converting...";
-    
-            try {
-                const response = await fetch("http://localhost:3000/convert", {
-                    method: "POST",
-                    body: formData
-                });
-    
-                const data = await response.json();
-    
-                if (data.success) {
-                    const pdfURL = `http://localhost:3000${data.pdfURL}`;
-                    document.getElementById("pdfPreview").src = pdfURL;
-                    document.getElementById('conversion-status').innerHTML = "Conversion Successful!";
-                } else {
-                    document.getElementById('conversion-status').innerHTML = "Conversion failed.";
+    <script>
+        document.getElementById("fileSelect").addEventListener("change", function () {
+            const fileInput = this;
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : "";
+
+            var loader = document.getElementById("loader3");
+            loader.style.display = "flex"; 
+
+            setTimeout(function () {
+                loader.style.display = "none";  
+                document.getElementById("file-name").innerText = fileName;
+
+                if (fileName.endsWith(".docx")) {
+                    document.getElementById("convert-btn").style.display = "block";
                 }
-            } catch (error) {
-                document.getElementById('conversion-status').innerHTML = "An error occurred.";
-                console.error(error);
-            }
+            }, 2000);
+
         });
     </script>
 </body>
