@@ -13,14 +13,20 @@
     <div id="navbar-placeholder"></div>
 
     <script>
-      fetch('navbar.html')
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById('navbar-placeholder').innerHTML = data
+        fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-placeholder').innerHTML = data;
+      
+          // Reinitialize the event listener after navbar is added
+          const contactBtn = document.querySelector('.Register-btn');
+          if (contactBtn) {
+            contactBtn.addEventListener('click', register_togglePopup);
+          }
         })
-        .catch((error) => console.error('Error loading navbar:', error))
-    </script>
-
+        .catch(error => console.error('Error loading navbar:', error));
+      
+      </script>
     <div class="doc-pdf-title">
       <h1>Word to PDF</h1>
       <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
