@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word to PDF Converter</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/doc-pdf.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <script>
+      fetch('navbar.html')
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById('navbar-placeholder').innerHTML = data
+        })
+        .catch((error) => console.error('Error loading navbar:', error))
+    </script>
+
+    <div class="doc-pdf-title">
+      <h1>Word to PDF</h1>
+      <h4>Convert your Word documents to PDF instantly, securely, and with high quality!</h4>
+
+      <form id="uploadForm">
+        <label for="fileSelect" class="doc-pdf-label">Upload Word File</label>
+        <input type="file" id="fileSelect" accept=".doc,.docx" style="display: none;" />
+        <div class="loader3" id="loader3" style="display: none;">
+          <div class="bars bar1"></div>
+          <div class="bars bar2"></div>
+          <div class="bars bar3"></div>
+          <div class="bars bar4"></div>
+          <div class="bars bar5"></div>
+          <div class="bars bar6"></div>
+          <div class="bars bar7"></div>
+          <div class="bars bar8"></div>
+          <div class="bars bar9"></div>
+          <div class="bars bar10"></div>
+        </div>
+        <p id="file-name" style="color: orange;"></p>
+      </form>
+
+      <button class="convert-btn" id="convert-btn" style="display: none;">Convert</button>
+    </div>
+
+    <script>
+      let selectedFile
+      document.getElementById('fileSelect').addEventListener('change', function () {
+        const fileInput = this.files[0]
+        selectedFile = fileInput
+
+        // Show loader for 2 seconds after file is selected
+        var loader = document.getElementById('loader3')
+        loader.style.display = 'flex'
+
+        setTimeout(function () {
+          loader.style.display = 'none'
+          const fileName = fileInput ? fileInput.name : ''
+          document.getElementById('file-name').innerText = fileName
+
+          if (fileName.endsWith('.docx')) {
+            document.getElementById('convert-btn').style.display = 'block'
+          }
+        }, 2000)
+      })
+
+      document.getElementById('convert-btn').addEventListener('click', function () {
+        const formData = new FormData()
+        formData.append('file', selectedFile)
+
+        fetch('http://localhost:5500/upload', {
+          method: 'POST',
+          body: formData
+        })
+          .then((response) => response.blob())
+          .then((blob) => {
+            const link = document.createElement('a')
+            link.href = URL.createObjectURL(blob)
+            link.download = selectedFile.name.replace('.docx', '.pdf')
+            document.body.appendChild(link)
+            link.click()
+            document.body.removeChild(link)
+          })
+          .catch((error) => console.error('Error during conversion:', error))
+      })
+    </script>
+  </body>
+</html>
